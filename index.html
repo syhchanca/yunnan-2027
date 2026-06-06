@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雲南之旅 — Simon & Joyce | 2027年1月</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --black: #222222;
+      --text-secondary: #6a6a6a;
+      --text-muted: #929292;
+      --accent: #ff385c;
+      --accent-deep: #e00b41;
+      --surface-light: #f7f7f7;
+      --border: #e0e0e0;
+      --card-shadow: 0 0 0 1px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.1);
+      --hover-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 32px;
+      --color-kunming: #ff385c;
+      --color-dali: #428bff;
+      --color-shaxi: #d4a853;
+      --color-lijiang: #7c5ce7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #1a1a2e 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 24px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(255,56,92,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 30%, rgba(66,139,255,0.1) 0%, transparent 50%),
+                  radial-gradient(ellipse at 50% 80%, rgba(124,92,231,0.08) 0%, transparent 50%);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero .subtitle {
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: -0.3px;
+      margin-bottom: 32px;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat .num {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    .hero-stat .label {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Route Overview ── */
+    .route-bar {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--card-shadow);
+      margin-top: -36px;
+      position: relative;
+      z-index: 2;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .route-city {
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 18px;
+      border-radius: 50px;
+      letter-spacing: -0.3px;
+    }
+    .route-city.km { background: #fff0f3; color: var(--color-kunming); }
+    .route-city.dl { background: #eef4ff; color: var(--color-dali); }
+    .route-city.sx { background: #fef9f0; color: var(--color-shaxi); }
+    .route-city.lj { background: #f4f0ff; color: var(--color-lijiang); }
+    .route-arrow { color: var(--text-muted); font-size: 16px; font-weight: 300; }
+
+    /* ── Section Headers ── */
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    /* ── City Section ── */
+    .city-section {
+      margin-bottom: 56px;
+      scroll-margin-top: 24px;
+    }
+    .city-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .city-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+    .city-icon.km { background: #fff0f3; }
+    .city-icon.dl { background: #eef4ff; }
+    .city-icon.sx { background: #fef9f0; }
+    .city-icon.lj { background: #f4f0ff; }
+    .city-meta h2 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .city-meta .city-dates {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* ── Day Card ── */
+    .day-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--card-shadow);
+      padding: 28px;
+      margin-bottom: 16px;
+      transition: box-shadow 0.2s ease;
+    }
+    .day-card:hover { box-shadow: var(--hover-shadow); }
+    .day-card-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .day-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      background: #fff0f3;
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+    .day-date {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .day-weekday {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .day-route {
+      margin-left: auto;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--surface-light);
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+    .day-schedule {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) { .day-schedule { grid-template-columns: 1fr; } }
+    .day-period {
+      background: var(--surface-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .day-period .period-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .day-period .activity {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+    .day-period .activity .emoji { margin-right: 4px; }
+    .day-period .note {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+      font-style: italic;
+    }
+    .day-extras {
+      margin-top: 14px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+    .day-tag {
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 12px;
+    }
+    .tag-food { background: #fff8e8; color: #b8860b; }
+    .tag-transport { background: #e8f4ff; color: #2b6cb0; }
+    .tag-hotel { background: #f4f0ff; color: #6b46c1; }
+    .tag-ticket { background: #ffe8ec; color: #c0392b; }
+    .tag-warning { background: #fff3cd; color: #856404; }
+
+    /* ── Hotel Section ── */
+    .hotel-box {
+      background: linear-gradient(135deg, #fafafa, #f5f5f5);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-top: 20px;
+      margin-bottom: 24px;
+    }
+    .hotel-box h3 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .hotel-box .hotel-sub {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .hotel-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .hotel-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.06);
+    }
+    .hotel-card .hc-name {
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.2px;
+      margin-bottom: 2px;
+    }
+    .hotel-card .hc-en {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    .hotel-card .hc-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .hotel-card .hc-price {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .hotel-card .hc-stars { color: #f59e0b; font-weight: 600; }
+    .hotel-card .hc-feature {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    .hotel-card.best {
+      border: 2px solid var(--accent);
+      position: relative;
+    }
+    .hotel-card.best::before {
+      content: '⭐ 推薦';
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Special Day ── */
+    .day-card.special {
+      border-left: 4px solid var(--color-shaxi);
+    }
+    .day-card.dad-bday {
+      border-left: 4px solid #f59e0b;
+      background: linear-gradient(135deg, #fffdf5, #fffef9);
+    }
+
+    /* ── Rest Day ── */
+    .rest-badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* ── Tips Section ── */
+    .tips-section {
+      background: linear-gradient(135deg, #fef9f0, #fdf5e6);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      margin: 48px 0;
+    }
+    .tips-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin-bottom: 20px;
+    }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .tip-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.04);
+    }
+    .tip-item .tip-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+    .tip-item .tip-text {
+      line-height: 1.5;
+    }
+
+    /* ── Budget Bar ── */
+    .budget-bar {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--card-shadow);
+      padding: 24px;
+      margin: 32px 0;
+    }
+    .budget-bar h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.3px;
+    }
+    .budget-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .budget-row:last-child { border-bottom: none; font-weight: 700; }
+    .budget-row .cat { color: var(--text-secondary); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+    /* ── Print Styles ── */
+    @media print {
+      .hero { padding: 40px 24px 40px; background: #1a1a2e !important; -webkit-print-color-adjust: exact; }
+      .day-card { break-inside: avoid; box-shadow: 0 0 0 1px #ddd; }
+      .city-section { break-before: page; }
+      .city-section:first-of-type { break-before: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✈️ Simon & Joyce</div>
+    <h1>雲南之旅 <span>2027</span></h1>
+    <p class="subtitle">香港 → 昆明 → 大理 → 沙溪 → 麗江 → 香港 · 19天18晚 · 休閒美食之旅</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">19</div><div class="label">天數</div></div>
+      <div class="hero-stat"><div class="num">5</div><div class="label">城市</div></div>
+      <div class="hero-stat"><div class="num">1/3</div><div class="label">出發</div></div>
+      <div class="hero-stat"><div class="num">1/21</div><div class="label">回程</div></div>
+      <div class="hero-stat"><div class="num">~$4.9K</div><div class="label">CAD 預算</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ═══════════ ROUTE BAR ═══════════ -->
+  <div class="route-bar">
+    <span class="route-city km">🇭🇰 香港</span><span class="route-arrow">→</span>
+    <span class="route-city km">🏙️ 昆明</span><span class="route-arrow">→</span>
+    <span class="route-city dl">🌊 大理</span><span class="route-arrow">→</span>
+    <span class="route-city sx">🐴 沙溪</span><span class="route-arrow">→</span>
+    <span class="route-city lj">🏔️ 麗江</span><span class="route-arrow">→</span>
+    <span class="route-city km">🏙️ 昆明</span><span class="route-arrow">→</span>
+    <span class="route-city km">🇭🇰 香港</span>
+  </div>
+
+  <!-- ═══════════ KUNMING (去程) ═══════════ -->
+  <section class="city-section" id="kunming1">
+    <div class="city-header">
+      <div class="city-icon km">🏙️</div>
+      <div class="city-meta">
+        <h2>昆明 · Kunming</h2>
+        <div class="city-dates">1月3日–5日 · 3晚 · 海拔 ~1,900m</div>
+      </div>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 1</span>
+        <span class="day-date">1月3日</span>
+        <span class="day-weekday">周日</span>
+        <span class="day-route">🇭🇰 → 昆明</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity">香港國際機場出發<br>中國東方航空直飛，約 2.5 小時</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">抵達昆明長水機場<br>機場大巴 ¥25/人 或 打車 ¥100<br><strong>翠湖公園散步看紅嘴鷗</strong> 🕊️</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍜 建新園過橋米線 ¥20-39</span>
+        <span class="day-tag tag-transport">🚌 機場大巴 ¥25</span>
+        <span class="day-tag tag-warning">⚠️ 早休息適應海拔</span>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 2</span>
+        <span class="day-date">1月4日</span>
+        <span class="day-weekday">周一</span>
+        <span class="day-route">🏙️ 昆明</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>石林風景區</strong><br>門票 ¥130/人 · 電瓶車 ¥25<br>包車約 1.5 小時</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">返回昆明市區<br><strong>多哥水傣味餐廳</strong> 傣族風味<br>翠湖 / 文林街散步</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍗 彝家風味午餐 ¥40-60</span>
+        <span class="day-tag tag-food">🌶️ 多哥水傣味 ¥60-80</span>
+        <span class="day-tag tag-ticket">🎫 石林 ¥130/人</span>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 3</span>
+        <span class="day-date">1月5日</span>
+        <span class="day-weekday">周二</span>
+        <span class="day-route">🏙️ 昆明</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>西山森林公園</strong> 🚡<br>纜車上山 ¥40，俯瞰滇池</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">海埂大壩看紅嘴鷗<br>文林街 / 文化巷文藝老街<br>薩爾瓦多咖啡館 ☕<br><em>收拾行李，明天去大理</em></div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍲 福照樓汽鍋雞 ¥60-80</span>
+        <span class="day-tag tag-food">🏮 一顆印老房子 ¥60-80</span>
+      </div>
+    </div>
+
+    <!-- Kunming Hotels -->
+    <div class="hotel-box">
+      <h3>🏨 昆明住宿 — 翠湖附近</h3>
+      <div class="hotel-sub">🔍 預訂請上 <strong>hk.trip.com</strong> 搜英文名 · 回程建議住同一間 · ¥350-500/晚</div>
+      <div class="hotel-cards">
+        <div class="hotel-card best">
+          <div class="hc-name">昆明翠湖賓館</div>
+          <div class="hc-en">Green Lake Hotel</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥450-550</span>
+            <span class="hc-stars">4.7★</span>
+          </div>
+          <div class="hc-feature">翠湖正對面 · 老牌五星 · 早餐豐富</div>
+        </div>
+        <div class="hotel-card best">
+          <div class="hc-name">亞朵酒店 · 文林街店</div>
+          <div class="hc-en">Atour Hotel Wenlin St</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥380-480</span>
+            <span class="hc-stars">4.8★</span>
+          </div>
+          <div class="hc-feature">近文林街 · 床品舒適 · 中西早餐</div>
+        </div>
+        <div class="hotel-card">
+          <div class="hc-name">麗楓酒店 · 翠湖店</div>
+          <div class="hc-en">Lavande Hotel Cuihu</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥350-420</span>
+            <span class="hc-stars">4.6★</span>
+          </div>
+          <div class="hc-feature">薰衣草香氛 · 全館禁煙</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ DALI HAIXI ═══════════ -->
+  <section class="city-section" id="dali">
+    <div class="city-header">
+      <div class="city-icon dl">🌊</div>
+      <div class="city-meta">
+        <h2>大理 · Dali</h2>
+        <div class="city-dates">1月6日–12日 · 7晚 · 海西 4晚 + 海東 3晚 · 海拔 ~2,000m</div>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 4</span>
+        <span class="day-date">1月6日</span>
+        <span class="day-weekday">周三</span>
+        <span class="day-route">昆明 → 大理 · 住海西</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity">早餐退房<br>昆明站 → 大理 高鐵 2h<br>二等座 ¥145-155/人</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">入住海西客棧<br>洱海邊散步 · 才村碼頭<br><strong>洱海日落</strong> 🌅</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🐟 白族酸辣魚 ¥50-70</span>
+        <span class="day-tag tag-transport">🚄 高鐵 ¥145-155</span>
+        <span class="day-tag tag-hotel">🏨 海西 第1晚</span>
+      </div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 5</span>
+        <span class="day-date">1月7日</span>
+        <span class="day-weekday">周四</span>
+        <span class="day-route">環洱海 · 住海西</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>包車環洱海</strong> 🚗 ¥300-400/天<br>喜洲古鎮 · 轉角樓<br>喜洲粑粑 ¥5-10</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">海舌生態公園<br>周城扎染體驗<br>雙廊古鎮 · 環海東路日落 🌅</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍽️ 喜洲翰林 ¥60-80</span>
+        <span class="day-tag tag-food">⭐ 段公子·天龍八部 ¥102</span>
+        <span class="day-tag tag-transport">🚗 包車 ¥300-400</span>
+      </div>
+    </div>
+
+    <!-- Day 6 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 6</span>
+        <span class="day-date">1月8日</span>
+        <span class="day-weekday">周五</span>
+        <span class="day-route">蒼山 · 住海西</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>蒼山感通索道</strong> 🚡<br>門票 ¥35 + 索道 ¥115/人<br>清碧溪 · 珍瓏棋局<br><em>海拔 2,600m，安全舒適</em></div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">大理古城漫步<br>人民路 · 洋人街 · 復興路<br>古城咖啡館休息 ☕</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍽️ 梅子井酒家 ¥60-80</span>
+        <span class="day-tag tag-ticket">🎫 感通索道 ¥115/人</span>
+        <span class="day-tag tag-hotel">🏨 海西 第3晚</span>
+      </div>
+    </div>
+
+    <!-- Day 7 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 7</span>
+        <span class="day-date">1月9日</span>
+        <span class="day-weekday">周六</span>
+        <span class="day-route">休閒日 · 住海西</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><span class="rest-badge">🌿 輕鬆日</span><br>睡到自然醒<br>才村碼頭散步</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">龍龕碼頭拍照 📸<br>洱海邊下午茶 ☕<br><em>收拾行李，明天換海東</em></div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍜 才村本地餐廳 ¥40-60</span>
+        <span class="day-tag tag-hotel">🏨 海西 最後一晚</span>
+      </div>
+    </div>
+
+    <!-- Dali Haixi Hotels -->
+    <div class="hotel-box">
+      <h3>🏨 大理海西住宿 — 才村 / 古城</h3>
+      <div class="hotel-sub">🔍 hk.trip.com · 4晚 (1/6-1/10) · ¥250-400/晚</div>
+      <div class="hotel-cards">
+        <div class="hotel-card best">
+          <div class="hc-name">洱海畔 · 海居客棧</div>
+          <div class="hc-en">Hai Ju Inn</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥280-380</span>
+            <span class="hc-stars">4.8★</span>
+          </div>
+          <div class="hc-feature">才村碼頭旁 · 白族庭院 · 出門即生態廊道</div>
+        </div>
+        <div class="hotel-card best">
+          <div class="hc-name">花筑奢 · 古麓春花園</div>
+          <div class="hc-en">Floral Lux Hotel</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥320-400</span>
+            <span class="hc-stars">4.8★</span>
+          </div>
+          <div class="hc-feature">白族花園庭院 · 管家幫提行李</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════ Dali Haidong ═════ -->
+    <!-- Day 8 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 8</span>
+        <span class="day-date">1月10日</span>
+        <span class="day-weekday">周日</span>
+        <span class="day-route">換住雙廊 · 海東</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity">退房，打車到雙廊 40-50min ¥80-100<br>入住雙廊海景客棧<br><strong>⚠️ 揀車可直達門口嘅客棧</strong></div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">雙廊古鎮漫步<br>海景下午茶 ☕ 海栖七號 / 六閱·無所<br><strong>洱海日落</strong> 🌅 蒼山做背景</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🐟 雙廊魚莊 ¥50-80</span>
+        <span class="day-tag tag-food">🍽️ 醉琉璃私房菜 ¥70-90</span>
+        <span class="day-tag tag-hotel">🏨 海東 第1晚</span>
+      </div>
+    </div>
+
+    <!-- Day 9 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 9</span>
+        <span class="day-date">1月11日</span>
+        <span class="day-weekday">周一</span>
+        <span class="day-route">完全放空日 · 海東</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><span class="rest-badge">🌿 放空日</span><br>睡到自然醒 · 客棧早餐<br>雙廊海邊散步</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">海景咖啡館 ☕<br>客棧陽台喝茶看書<br>海景下午茶 · 看日落<br><em>什麼都不做，這才是度假</em></div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍲 阿婆情臘排骨火鍋 ¥60-80</span>
+      </div>
+    </div>
+
+    <!-- Day 10 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 10</span>
+        <span class="day-date">1月12日</span>
+        <span class="day-weekday">周二</span>
+        <span class="day-route">生態廊道 · 海東最後</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>才村生態廊道散步</strong> 🚶<br>全程平坦石板路，貼著洱海走<br>磻溪村「S彎」拍照 📸</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">湖邊咖啡館 心邸咖啡 ☕<br>最後一個洱海日落 🌅<br>告別晚餐 · 收拾行李<br><em>明天出發去沙溪！</em></div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">⭐ 段公子·天龍八部 ¥102</span>
+        <span class="day-tag tag-hotel">🏨 海東 最後一晚</span>
+      </div>
+    </div>
+
+    <!-- Shuanglang Hotels -->
+    <div class="hotel-box">
+      <h3>🏨 大理海東住宿 — 雙廊海景</h3>
+      <div class="hotel-sub">🔍 hk.trip.com · 3晚 (1/10-1/13) · ¥300-500/晚 · ⚠️ 揀車可直達門口</div>
+      <div class="hotel-cards">
+        <div class="hotel-card best">
+          <div class="hc-name">雲慢海景客棧</div>
+          <div class="hc-en">Yunman Seaview Inn</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥380-480</span>
+            <span class="hc-stars">4.7★</span>
+          </div>
+          <div class="hc-feature">古鎮入口附近 · 車可直達 · 海景陽台</div>
+        </div>
+        <div class="hotel-card best">
+          <div class="hc-name">玉洱漣漪海景客棧</div>
+          <div class="hc-en">Yuxuan Seaview Inn</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥350-460</span>
+            <span class="hc-stars">4.9★</span>
+          </div>
+          <div class="hc-feature">落地窗躺床看日落 · 智能馬桶 · 老闆娘幫搬行李</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SHAXI ═══════════ -->
+  <section class="city-section" id="shaxi">
+    <div class="city-header">
+      <div class="city-icon sx">🐴</div>
+      <div class="city-meta">
+        <h2>沙溪古鎮 · Shaxi</h2>
+        <div class="city-dates">1月13日 · 1晚 · 茶馬古道最後倖存的古集市 · ⚠️ 必須暖氣</div>
+      </div>
+    </div>
+
+    <!-- Day 11 -->
+    <div class="day-card special">
+      <div class="day-card-header">
+        <span class="day-num">Day 11</span>
+        <span class="day-date">1月13日</span>
+        <span class="day-weekday">周三</span>
+        <span class="day-route">大理 → 沙溪 🐴</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity">雙廊退房，行李裝車<br>雙廊 → 沙溪包車 2h<br>¥250-350 · 全程山路風景極佳</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity"><strong>寺登街 · 古戲台</strong><br>興教寺 ¥20/人 · 明代壁畫<br>玉津橋 · 黑潓江邊漫步<br>古鎮咖啡館 ☕</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍖 沙溪老馬店 ¥50-80</span>
+        <span class="day-tag tag-food">🏮 翕廬小苑 ¥40-60</span>
+        <span class="day-tag tag-warning">⚠️ 夜晚近0°C 必須暖氣</span>
+        <span class="day-tag tag-hotel">🏨 沙溪 1晚</span>
+      </div>
+    </div>
+
+    <!-- Shaxi Hotels -->
+    <div class="hotel-box">
+      <h3>🏨 沙溪住宿 — 寺登街核心區</h3>
+      <div class="hotel-sub">🔍 hk.trip.com · 1晚 · ¥200-350/晚 · ⚠️ 必須確認有暖氣/地暖</div>
+      <div class="hotel-cards">
+        <div class="hotel-card best">
+          <div class="hc-name">尋小院客棧</div>
+          <div class="hc-en">Xun Xiaoyuan Inn</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥260-350</span>
+            <span class="hc-stars">4.8★</span>
+          </div>
+          <div class="hc-feature">寺登街核心區 · 老宅改建 · 手作早餐</div>
+        </div>
+        <div class="hotel-card">
+          <div class="hc-name">時然山舍民宿</div>
+          <div class="hc-en">Shiran Mountain</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥230-320</span>
+            <span class="hc-stars">4.7★</span>
+          </div>
+          <div class="hc-feature">近古戲台 · 傳統木老宅 · 暖氣充足</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ LIJIANG ═══════════ -->
+  <section class="city-section" id="lijiang">
+    <div class="city-header">
+      <div class="city-icon lj">🏔️</div>
+      <div class="city-meta">
+        <h2>麗江 · Lijiang</h2>
+        <div class="city-dates">1月14日–17日 · 4晚 · 束河古鎮 · 海拔 ~2,400m</div>
+      </div>
+    </div>
+
+    <!-- Day 12 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 12</span>
+        <span class="day-date">1月14日</span>
+        <span class="day-weekday">周四</span>
+        <span class="day-route">沙溪 → 麗江</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>沙溪清晨漫步</strong> — 炊煙·馬蹄·晨光<br>退房 · 沙溪→麗江包車 1.5-2h ¥250-350</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">入住束河客棧<br>束河古鎮漫步<br>九鼎龍潭 · 青龍橋 · 咖啡館 ☕<br>束河比大研安靜，坡度平緩</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍲 粗茶淡飯 ¥50-60</span>
+        <span class="day-tag tag-food">⭐ 阿婆情臘排骨 ¥60-80</span>
+        <span class="day-tag tag-hotel">🏨 束河 第1晚</span>
+      </div>
+    </div>
+
+    <!-- Day 13 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 13</span>
+        <span class="day-date">1月15日</span>
+        <span class="day-weekday">周五</span>
+        <span class="day-route">玉龍雪山 🏔️</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>玉龍雪山</strong> 🏔️<br>進山費 ¥100/人<br>冰川大索道 ¥140/人<br>冰川公園 海拔 4,506m<br><em>需提前1天公眾號預訂！</em></div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">藍月谷遊覽<br>返回客棧休息恢復<br><strong>⚠️ 當天不要洗澡！</strong><br>高海拔+寒冷洗澡易感冒<br>感冒加重高原反應 → 危險</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-ticket">🎫 進山¥100 + 索道¥140</span>
+        <span class="day-tag tag-warning">⚠️ 不洗澡！帶氧氣瓶 ¥20-30</span>
+        <span class="day-tag tag-food">🍲 鈺潔臘排骨 ¥50-70</span>
+      </div>
+    </div>
+
+    <!-- Day 14 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 14</span>
+        <span class="day-date">1月16日</span>
+        <span class="day-weekday">周六</span>
+        <span class="day-route">大研古城 + 黑龍潭</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity">睡到自然醒（昨日雪山消耗大）<br><strong>大研古城</strong>：四方街 · 大水車<br>木府 ¥40/人<br><em>可選：白沙古鎮（打車15min）</em></div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity"><strong>黑龍潭公園</strong> ¥50<br>拍玉龍雪山倒影最佳機位 📸<br>古城咖啡館休息 ☕</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍜 88號小吃店 ¥40-60</span>
+        <span class="day-tag tag-food">🏮 阿一旦納西庭院 ¥80-100</span>
+        <span class="day-tag tag-ticket">🎫 木府¥40 + 黑龍潭¥50</span>
+      </div>
+    </div>
+
+    <!-- Day 15 -->
+    <div class="day-card dad-bday">
+      <div class="day-card-header">
+        <span class="day-num">Day 15</span>
+        <span class="day-date">1月17日</span>
+        <span class="day-weekday">周日</span>
+        <span class="day-route">拉市海濕地</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>🎂 爸爸生日！</strong><br>記得打電話/視頻祝爸爸生日快樂<br><strong>拉市海濕地公園</strong> 🦆<br>門票 ¥30/人 · 木棧道觀鳥<br>冬季候鳥天堂！黑頸鶴·斑頭雁</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity">濕地博物館（免費）<br>返回束河休息 · 閒逛<br>飛花觸水 · 三眼井<br><em>收拾行李，明天返程</em></div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">⭐ 阿婆情臘排骨 ¥60-80</span>
+        <span class="day-tag tag-warning">⚠️ 不騎馬！只看濕地觀鳥</span>
+        <span class="day-tag tag-hotel">🏨 束河 最後一晚</span>
+      </div>
+    </div>
+
+    <!-- Lijiang Hotels -->
+    <div class="hotel-box">
+      <h3>🏨 麗江束河住宿</h3>
+      <div class="hotel-sub">🔍 hk.trip.com · 4晚 (1/14-1/18) · ¥150-300/晚 · 束河比大研安靜</div>
+      <div class="hotel-cards">
+        <div class="hotel-card best">
+          <div class="hc-name">束河九號大院</div>
+          <div class="hc-en">No.9 Courtyard</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥180-260</span>
+            <span class="hc-stars">4.8★</span>
+          </div>
+          <div class="hc-feature">納西陽光庭院 · 多肉花園 · 性價比極高</div>
+        </div>
+        <div class="hotel-card best">
+          <div class="hc-name">常春藤唯美客棧</div>
+          <div class="hc-en">Ivy Boutique Inn</div>
+          <div class="hc-meta">
+            <span class="hc-price">¥220-300</span>
+            <span class="hc-stars">4.7★</span>
+          </div>
+          <div class="hc-feature">納西木四合院 · 茶室 · 庭院曬太陽</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ KUNMING (返程) ═══════════ -->
+  <section class="city-section" id="kunming2">
+    <div class="city-header">
+      <div class="city-icon km">🏙️</div>
+      <div class="city-meta">
+        <h2>昆明 · Kunming（返程）</h2>
+        <div class="city-dates">1月18日–20日 · 3晚</div>
+      </div>
+    </div>
+
+    <!-- Day 16 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 16</span>
+        <span class="day-date">1月18日</span>
+        <span class="day-weekday">周一</span>
+        <span class="day-route">麗江 → 昆明</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity">早餐 · 退房<br>麗江站 → 昆明 高鐵 3-3.5h<br>二等座 ¥197-220/人</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity"><strong>入住同去程酒店</strong><br>南屏步行街 / 金馬碧雞坊<br>文林街喝咖啡 ☕</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-food">🍽️ 一顆印老房子 ¥60-80</span>
+        <span class="day-tag tag-food">🌶️ 醉雲喃 ¥80-100</span>
+        <span class="day-tag tag-hotel">🏨 住去程同酒店</span>
+      </div>
+    </div>
+
+    <!-- Day 17 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 17</span>
+        <span class="day-date">1月19日</span>
+        <span class="day-weekday">周二</span>
+        <span class="day-route">民族村 + 夜市</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>雲南民族村</strong> 🏛️<br>門票 ¥90/人 · 電瓶車 ¥30<br>25個少數民族村寨<br>民族歌舞表演（免費）</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌙 傍晚</div>
+          <div class="activity"><strong>南強街小吃夜市</strong> 🌙<br>烤乳扇 · 燒餌塊 · 小鍋米線<br>烤豬蹄 · 木瓜水 · 豆花米線<br>人均 ¥40-60 就能吃遍</div>
+        </div>
+      </div>
+      <div class="day-extras">
+        <span class="day-tag tag-ticket">🎫 民族村 ¥90/人</span>
+        <span class="day-tag tag-food">🌙 南強街夜市 ¥40-60</span>
+      </div>
+    </div>
+
+    <!-- Day 18 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 18</span>
+        <span class="day-date">1月20日</span>
+        <span class="day-weekday">周三</span>
+        <span class="day-route">花市 + 市場</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period">
+          <div class="period-label">☀️ 上午</div>
+          <div class="activity"><strong>斗南花市</strong> 💐<br>亞洲最大鮮花市場<br>鮮花論斤賣！超便宜</div>
+        </div>
+        <div class="day-period">
+          <div class="period-label">🌤️ 下午</div>
+          <div class="activity"><strong>篆新市場</strong> 買特產 🛍️<br>宣威火腿 · 普洱茶 · 鮮花餅<br><em>收拾行李，明天回香港</em></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 19 — not in hotel but travel day -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-num">Day 19</span>
+        <span class="day-date">1月21日</span>
+        <span class="day-weekday">周四</span>
+        <span class="day-route">昆明 → 香港 🇭🇰</span>
+      </div>
+      <div class="day-schedule">
+        <div class="day-period" style="grid-column: 1 / -1;">
+          <div class="period-label">✈️ 回家</div>
+          <div class="activity">昆明長水機場 → 香港國際機場<br>中國東方航空直飛 · 約 2.5 小時<br><br><strong>🎉 19天雲南之旅圓滿結束！</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ BUDGET ═══════════ -->
+  <div class="budget-bar">
+    <h3>💰 預算總覽</h3>
+    <div class="budget-row"><span class="cat">✈️ 機票 HK↔KMG</span><span>~$735 CAD</span></div>
+    <div class="budget-row"><span class="cat">🚄 高鐵 (2段)</span><span>~$137 CAD</span></div>
+    <div class="budget-row"><span class="cat">🏨 住宿 18晚</span><span>~$1,197 CAD</span></div>
+    <div class="budget-row"><span class="cat">🎫 景點門票</span><span>~$334 CAD</span></div>
+    <div class="budget-row"><span class="cat">🍜 餐飲 19天</span><span>~$1,013 CAD</span></div>
+    <div class="budget-row"><span class="cat">🚗 市內交通+包車</span><span>~$419 CAD</span></div>
+    <div class="budget-row"><span class="cat">🔖 雜項/紀念品</span><span>~$229 CAD</span></div>
+    <div class="budget-row"><span class="cat">📊 預算佔用</span><span>~$4,913 CAD (49%)</span></div>
+    <div class="budget-row"><span class="cat">💡 剩餘可用</span><span>~$5,087 CAD</span></div>
+  </div>
+
+  <!-- ═══════════ TIPS ═══════════ -->
+  <div class="tips-section">
+    <h2>🌤️ 旅行貼士</h2>
+    <div class="tips-grid">
+      <div class="tip-item">
+        <div class="tip-icon">🧥</div>
+        <div class="tip-text"><strong>洋蔥式穿衣</strong><br>發熱衣 → 毛衣 → 防風羽絨<br>日夜溫差可達 15°C</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🧴</div>
+        <div class="tip-text"><strong>保濕防曬</strong><br>旱季極乾燥 + 紫外線強<br>必帶：高保濕、護唇膏、墨鏡</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🏔️</div>
+        <div class="tip-text"><strong>高原注意</strong><br>大理~2,000m · 麗江~2,400m<br>動作放慢，多喝水</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🚿</div>
+        <div class="tip-text"><strong>雪山日不洗澡</strong><br>高海拔+寒冷洗澡易感冒<br>感冒加重高反 → 危險</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🧳</div>
+        <div class="tip-text"><strong>雙廊揀客棧</strong><br>確認車可直達門口<br>避免拖行李行石板路</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🥶</div>
+        <div class="tip-text"><strong>沙溪保暖</strong><br>1月夜晚近 0°C<br>必須確認有暖氣/地暖</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🏨</div>
+        <div class="tip-text"><strong>昆明回程</strong><br>住返同一間酒店<br>熟悉環境免重新適應</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🔍</div>
+        <div class="tip-text"><strong>預訂酒店</strong><br>上 <strong>hk.trip.com</strong><br>搜英文名即可找到</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>雲南之旅 2027 · Simon & Joyce · v6 酒店推薦整合版</p>
+  <p style="margin-top:8px">🔍 預訂酒店請上 <a href="https://hk.trip.com">hk.trip.com</a> 搜尋英文名</p>
+  <p style="margin-top:4px;color:var(--text-muted)">Google Sheet: 1JrSz_I4VsXx2do-6uVCnMXyEMrqVcDtHzLTfpWntMnU</p>
+</footer>
+
+</body>
+</html>
