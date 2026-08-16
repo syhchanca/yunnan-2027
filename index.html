@@ -442,6 +442,48 @@
     .budget-row:last-child { border-bottom: none; font-weight: 700; }
     .budget-row .cat { color: var(--text-secondary); }
 
+    /* ── 包車攻略 Section ── */
+    .baoche-section {
+      background: linear-gradient(135deg, #eef7f2, #e3f0ea);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      margin: 48px 0;
+    }
+    .baoche-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+    }
+    .baoche-sub {
+      color: var(--text-secondary);
+      font-size: 13px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .baoche-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .baoche-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-size: 14px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.04);
+    }
+    .baoche-card .bc-title { font-weight: 700; margin-bottom: 6px; }
+    .baoche-card .bc-tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; }
+    .baoche-card .bc-line { line-height: 1.55; color: var(--text-secondary); font-size: 13px; }
+    .baoche-table-wrap { background: var(--white); border-radius: var(--radius-md); padding: 16px; box-shadow: 0 0 0 1px rgba(0,0,0,0.04); margin-bottom: 24px; overflow-x: auto; }
+    .baoche-table-wrap h4 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .baoche-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .baoche-table th { text-align: left; font-weight: 700; padding: 8px 10px; border-bottom: 2px solid var(--border); white-space: nowrap; }
+    .baoche-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .baoche-notes { font-size: 13px; line-height: 1.7; color: var(--text-secondary); }
+
     /* ── Footer ── */
     footer {
       text-align: center;
@@ -1043,11 +1085,51 @@
     </div>
   </div>
 
+  <!-- ═══════════ 包車攻略 ═══════════ -->
+  <div class="baoche-section">
+    <h2>🚗 包車攻略</h2>
+    <div class="baoche-sub">三大方法 + 雲南2026實價（來源：草根猫《內地預約包車方法》YouTube + Genesis 調研 · 詳見 Google Sheet「包車攻略」tab）</div>
+    <div class="baoche-grid">
+      <div class="baoche-card">
+        <span class="bc-tag" style="background:#e0f2fe;color:#0369a1;">App 預約 · 最可靠</span>
+        <div class="bc-title">攜程 / Trip.com / 高德</div>
+        <div class="bc-line">實名司機、平台審核、明碼實價、可投訴<br>8h/100km套餐，超時超公里雙重收費<br>¥800+/日 · 長途/重要行程（石林、沙溪）<br>⚠️ 攜程要內地電話+支付；<strong>Trip.com 接受香港電話 + Visa/MC/PayMe</strong></div>
+      </div>
+      <div class="baoche-card">
+        <span class="bc-tag" style="background:#dcfce7;color:#15803d;">民宿介紹 · 最平</span>
+        <div class="bc-title">客棧/民宿推薦</div>
+        <div class="bc-line">當地司機熟路熟食、可建議路線美食<br>~¥500/日（比平台平¥300+）<br>短途/臨時行程（洱海、雪山）<br>⚠️ 出發前2-3日問；必問：時數/超時/公里/行李/額外收費</div>
+      </div>
+      <div class="baoche-card">
+        <span class="bc-tag" style="background:#fef3c7;color:#b45309;">小紅書 · 選擇多</span>
+        <div class="bc-title">小紅書搜尋</div>
+        <div class="bc-line">「¥X起」要私訊報價；貨比三家<br>一間報價額外收¥200回程費 — 一定要格價<br>適合有充裕時間準備的人</div>
+      </div>
+    </div>
+    <div class="baoche-table-wrap">
+      <h4>雲南 2026 實價（5人座 · 基準 8小時/100公里）</h4>
+      <table class="baoche-table">
+        <thead><tr><th>路線</th><th>參考價 CNY/日</th><th>備註</th></tr></thead>
+        <tbody>
+          <tr><td>昆明市區及近郊</td><td>¥350–450</td><td>超時 ¥30–50/小時，超公里 ¥2–3/公里</td></tr>
+          <tr><td>昆明往返石林</td><td>¥550–700</td><td>往返約180–200公里，長途專線（含高速費）</td></tr>
+          <tr><td>大理環洱海</td><td>¥450–550</td><td>100–130公里，8–9小時；海東可隨時停車拍照</td></tr>
+          <tr><td>大理往返沙溪古鎮</td><td>¥600–700</td><td>往返約260公里，單程2–2.5小時，山路較多</td></tr>
+          <tr><td>麗江玉龍雪山+拉市海</td><td>¥400–500</td><td>80–100公里，8小時左右</td></tr>
+          <tr><td>跨城點對點：大理→麗江</td><td>~¥400–500</td><td>加停沙溪遊玩約 ¥700–800</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="baoche-notes">
+      <strong>細節提醒：</strong>① 訂單揀「全包價」（包油費、過路費、停車費）② 隧道/高速費一般唔包，先用高德查公里數估算 ③ 洱海海西生態廊道私家車禁入（停才村/喜洲），海東可隨停拍照 ④ 玉龍雪山大索道4506m太高 ❌ 去藍月谷(~2800m)+甘海子(~3100m)，司機送到遊客中心轉環保大巴 ⑤ 司機餐費：帶司機一齊食或畀 ¥30–50 餐補 ⑥ 即日往返唔使負擔司機住宿 ⑦ 平台包車不需小費
+    </div>
+  </div>
+
 </div>
 
 <footer>
-  <p>雲南之旅 2027 · Simon & Joyce · v6 酒店推薦整合版</p>
-  <p style="margin-top:8px">Last updated: 2026-06-06 13:57 HKT</p>
+  <p>雲南之旅 2027 · Simon & Joyce · v7 包車攻略版</p>
+  <p style="margin-top:8px">Last updated: 2026-08-16 HKT</p>
   <p style="margin-top:8px">🔍 預訂酒店請上 <a href="https://hk.trip.com">hk.trip.com</a> 搜尋英文名</p>
   <p style="margin-top:4px;color:var(--text-muted)">Google Sheet: 1JrSz_I4VsXx2do-6uVCnMXyEMrqVcDtHzLTfpWntMnU</p>
 </footer>
